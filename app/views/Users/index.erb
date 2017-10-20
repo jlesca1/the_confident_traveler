@@ -1,0 +1,8 @@
+<h1>
+<div class='users'>
+  <ul>
+    <li><% @user.each do |count| %></li>
+    <li><%= "#{count.username} - #{count.first_name} - #{count.last_name} - #{count.email}" %> - <a href="/users/<%= count.id %>">show</a></li>
+    <li><% end %></li>
+  </ul>
+</div>
