@@ -1,0 +1,29 @@
+<style>form div { padding: 10 px; }</style>
+
+<form action="/users/<%= @user.id %>" method="POST">
+  <input name="_method" type="hidden" value="patch" />
+  <br>
+  <div>
+    <lable for="user_username">Username</lable>
+    <input id="user_username" name="user[username]" type="text" value="<%= @user.username %>" />
+  </div>
+  <br>
+  <div>
+    <lable for="user_first_name">First Name</lable>
+    <input id="user_first_name" name="user[first_name]" type="text" value="<%= @user.first_name %>" />
+  </div>
+  <br>
+  <div>
+    <lable for="user_last_name">Last Name</lable>
+    <input id="user_last_name" name="user[last_name]" type="text" value="<%= @user.last_name %>" />
+  </div>
+  <br>
+  <div>
+    <lable for="user_email">Email</lable>
+    <input id="user_email" name="user[email]" type="text" value="<%= @user.email %>" />
+  </div>
+  <br>
+  <div>
+    <input name="commit" type="submit" value="Edit User"/>
+  </div>
+</form>
