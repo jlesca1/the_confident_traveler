@@ -1,8 +1,13 @@
-<h1>
+
 <div class='users'>
   <ul>
-    <li><% @user.each do |count| %></li>
-    <li><%= "#{count.username} - #{count.first_name} - #{count.last_name} - #{count.email}" %> - <a href="/users/<%= count.id %>">show</a></li>
-    <li><% end %></li>
+    <% @users.each do |user| %>
+    <li>
+      <%= "#{user.username} - #{user.first_name} -
+      #{user.last_name} - #{user.email}" %> -
+      <a href="/users/<%= user.id %>">show</a> -
+      <%= erb :'users/_delete', locals: { user: user } %>
+    </li>
+    <% end %>
   </ul>
 </div>

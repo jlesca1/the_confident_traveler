@@ -1,18 +1,20 @@
 #index
 get '/users/' do
-  @user = User.all
+  @users = User.all
   erb :'users/index'
 end
 
 #new
 get '/users/new' do
-  "This is the new"
-  #erb :'users/new'
+  erb :'users/new'
 end
 
 #create
 post '/users' do
-  @users = Users.new
+  puts params
+
+  @user = User.create(params[:user])
+  redirect '/users/'
 
   # if @user.save
   #   redirect '/users'
@@ -23,25 +25,25 @@ end
 
 #show
 get '/users/:id' do
-  puts params
   @user = User.find(params[:id])
   erb :'users/show'
 end
 
 #edit
 get '/users/:id/edit' do
-"This is the edit"
-  #erb :'users/edit'
+  @user = User.find(params[:id])
+  erb :'users/edit'
 end
 
 #update
-put '/users/:id' do
-"This is the update"
-  #erb :'users'
+patch '/users/:id' do
+  @user = User.find(params[:id])
+  @user.update(params[:user])
+  redirect "/users/#{@user.id}"
 end
 
 #delete
 delete '/users/:id' do
-"This is the delete"
-  #erb :'users'
+  User.find(params[:id]).destroy!
+  redirect "/users"
 end
